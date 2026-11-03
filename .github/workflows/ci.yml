@@ -24,7 +24,7 @@ jobs:
                 node-version: '20'
             
             - name: Check Node.js Version
-              run: node --vesion
+              run: node --version
 
             - name: Install Dependencies
               run: npm install

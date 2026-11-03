@@ -9,25 +9,36 @@ on:
     branches:
       - main
 
+env:
+  APP_NAME: Employee Management
+  APP_ENV: Production
+  APP_VERSION: 1.0
+
 jobs:
-    build:
-        name: Build and Run Employee Management Application
-        runs-on: ubuntu-latest
+  build:
+    name: Build Node Application
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
-            
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                node-version: '20'
-            
-            - name: Check Node.js Version
-              run: node --version
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Install Dependencies
-              run: npm install
-            
-            - name: Run Employee Application
-              run: node app.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check Node Version
+        run: node --version
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Display Configuration
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Environment: $APP_ENV"
+          echo "Version: $APP_VERSION"
+
+      - name: Run Application
+        run: npm run start

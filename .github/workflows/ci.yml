@@ -1,0 +1,33 @@
+name: Employee Management Node CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    build:
+        name: Build and Run Employee Management Application
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '20'
+            
+            - name: Check Node.js Version
+              run: node --vesion
+
+            - name: Install Dependencies
+              run: npm install
+            
+            - name: Run Employee Application
+              run: node app.js
